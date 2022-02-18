@@ -1,20 +1,6 @@
-<%= turbo_frame_tag "appearance_channel" %>
-<div id="appearance_channel"></div>
-
 <div id="chatroom_container" class="row bg-dark text-light">
   <div id="side_panel" class="col-md-4 col-sm-4">
-    <li class="list-group-item d-flex align-items-center justify-content-between user_list_item">
-      <div class="icon-container">
-        <%= link_to image_tag(current_user.chat_avatar, class: 'chat_pfp'), current_user %>
-        <%= turbo_stream_from "user_status" %>
-        <div>
-          <%= render "users/status", user: current_user %>
-        </div>
-      </div>
-      <div class='ms-2 me-auto username'>
-        <%= current_user.email%>
-      </div>
-    </li>
+    <h5> <%= current_user.email %> </h5>
     <h4> Users </h4>
     <%= turbo_stream_from "users" %>
     <div id="users">

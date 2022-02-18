@@ -1,5 +1,0 @@
-<div class='icon-container'>
-  <%= link_to image_tag(user.chat_avatar, class: 'chat_pfp'), user %>
-  <%= turbo_stream_from "user_status" %>
-  <div class='status-circle <%= user.status_to_css %>'>
-  </div>
