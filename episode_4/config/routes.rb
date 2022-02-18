@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   end
   root 'pages#home'
   devise_for :users, controllers: {
-    sesions: 'users/sessions',
+    sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
