@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Turbochat</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+      <%= ".msg-#{current_user&.id}" %> {
+      background-color: #007bff !important;
+      padding: 10px;
+      }
+      <%= ".cont-#{current_user&.id}" %> {
+      display: flex;
+        justify-content: flex-end
+      }
+    </style>
+  </head>
+  <body>
+    <%= render "layouts/navbar" %>
+    <%= yield %>
+  </body>
+</html>
