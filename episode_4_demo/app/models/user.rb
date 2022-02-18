@@ -34,11 +34,11 @@ class User < ApplicationRecord
     end
   end
 
-  private
-
   def broadcast_update
     broadcast_replace_to 'user_status', partial: 'users/status', user: self
   end
+
+  private
 
   def add_default_avatar
     return if avatar.attached?
