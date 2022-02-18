@@ -11,7 +11,6 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     super
-    current_user.update(status: User.statuses[:online])
   end
 
   # DELETE /resource/sign_out

@@ -3,7 +3,7 @@
 <% if current_user %>
   <%= link_to "Start Chatting", rooms_path %>
   <%= image_tag(current_user.avatar_thumbnail) %>
-  <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+  <%= button_to "Logout", destroy_user_session_path, method: :delete, data: {turbo: "false"}%>
   <%= link_to "Edit Account", edit_user_registration_path, class:'btn btn-secondary'%>
 <% else %>
   <%= link_to "Login", new_user_session_path %>
