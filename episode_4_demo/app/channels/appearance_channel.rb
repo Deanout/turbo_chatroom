@@ -5,7 +5,6 @@ class AppearanceChannel < ApplicationCable::Channel
 
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
-
     stop_stream_from 'appearance_channel'
   end
 
@@ -30,7 +29,7 @@ class AppearanceChannel < ApplicationCable::Channel
 
   private
 
-  def broadcast_new_status(_status)
-    current_user.update(status: _status)
+  def broadcast_new_status(status)
+    current_user.update(status: status)
   end
 end
