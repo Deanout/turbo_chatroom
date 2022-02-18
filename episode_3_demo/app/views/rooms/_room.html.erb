@@ -1,0 +1,8 @@
+<% if @single_room && @single_room.name == room.name %>
+  <% isActive = 'active' %>
+<% else %>
+  <% isActive = '' %>
+<% end %>
+<%= link_to room.name,
+  room,
+  class:'list-group-item room_list_item ' + isActive %>

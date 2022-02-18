@@ -1,0 +1,16 @@
+<% if @single_room && @single_room.participant?(@single_room, user) %>
+  <% isActive = 'active' %>
+<% else %>
+  <% isActive = '' %>
+<% end %>
+<li class="list-group-item d-flex align-items-center justify-content-between user_list_item <%= isActive %>">
+  <div>
+    <%= link_to image_tag(user.chat_pfp, class: 'chat_pfp'), user %>
+    <%= turbo_stream_from %>
+    <div>
+      <!-- User Online/Away/Offline status bubble -->
+    </div>
+  </div>
+  <%= link_to user.email, user, class:'ms-2 me-auto username' %>
+  <div class="ms-2"></div>
+</li>

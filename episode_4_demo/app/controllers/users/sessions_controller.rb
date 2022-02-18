@@ -9,14 +9,16 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    current_user.update(status: User.statuses[:online])
+    super
+  end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    ActionCable.server.remote_connections.where(current_user: current_user).disconnect
+    super
+  end
 
   # protected
 

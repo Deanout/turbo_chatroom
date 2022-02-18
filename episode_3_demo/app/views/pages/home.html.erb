@@ -1,0 +1,15 @@
+<h1>Turbochat</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+<% if current_user %>
+  <div class="btn-group">
+    <%= link_to "Start Chatting", rooms_path, class:'btn btn-primary' %>
+    <%= button_to "Logout", destroy_user_session_path, method: :delete, class:'btn btn-danger' %>
+    <%= link_to "Edit Account", edit_user_registration_path, class:'btn btn-secondary'%>
+  </div>
+  <%= image_tag(current_user.pfp_thumbnail) if current_user.pfp.attached?%>
+<% else %>
+  <div class="btn-group">
+    <%= link_to "Login", new_user_session_path, class:'btn btn-primary' %>
+    <%= link_to "Sign Up", new_user_registration_path, class:'btn btn-secondary' %>
+  </div>
+<% end %>

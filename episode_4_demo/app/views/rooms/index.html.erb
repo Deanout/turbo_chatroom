@@ -1,6 +1,17 @@
 <div id="chatroom_container" class="row bg-dark text-light">
   <div id="side_panel" class="col-md-4 col-sm-4">
-    <h5> <%= current_user.email %> </h5>
+    <li class="list-group-item d-flex align-items-center justify-content-between user_list_item">
+      <div class='icon-container'>
+        <%= image_tag(current_user.chat_avatar, class: 'chat_pfp') %>
+        <%= turbo_stream_from "user_status" %>
+        <div>
+          <%= render "users/status", user: current_user %>
+        </div>
+      </div>
+      <div class="ms-2 me-auto username">
+        <%= current_user.email %>
+      </div>
+    </li>
     <h4> Users </h4>
     <%= turbo_stream_from "users" %>
     <div id="users">
