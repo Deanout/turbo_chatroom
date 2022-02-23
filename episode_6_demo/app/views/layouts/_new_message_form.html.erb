@@ -1,123 +1,25 @@
 <div class="form-group msg-form">
   <%= form_with(model: [@single_room, @message], remote: true, class:'d-flex',
   data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset"}) do |f| %>
-    <div id="attachment-previews">
+    <div id="attachment-previews" 
+      data-controller="message-preview"
+      data-action="message-preview#preview"
+      >
     </div>
     <div class="image-upload">
       <label for="message_attachments">
         <i class="bi bi-plus-circle upload-button"></i>
       </label>
-      <%= f.file_field(:attachments, multiple: true, onChange:"preview()") %>
+      <%= f.file_field(:attachments, multiple: true, 
+        data:{controller: "message-preview", action:"change->message-preview#preview"}) %>
     </div>
     <%= f.text_field :body, id: 'chat-text', class: 'form-control msg-content', autocomplete: 'off' %>
-    <%= f.submit "Send", onClick:"clearPreviews()", data: {disable_with: false}, class: 'btn btn-primary' %>
+    <%= f.submit "Send",
+      data: {disable_with: false, 
+      controller: "message-preview", 
+      action:"click->message-preview#clearPreviews"}, 
+      class: 'btn btn-primary' %>
   </div>
 <% end %>
 </div>
-<style>
-  .image-upload>input {
-    display: none;
-  }
-  .upload-button {
-    padding:10px;
-    font-size: 25px;
-  }
-  #attachment-previews {
-    position: absolute;
-    display: inline;
-    bottom: 120px;
-    height: 50px;
-  }
-  .attachment-preview {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 100%;
-    background-size:contain;
-    font-size: 50px;
-    text-align: bottom;
-    vertical-align: middle;
-    line-height: 0px;
-  }
-  /**
-  * Remove attachment on hover
-  */
-  .attachment-preview:hover {
-    cursor: pointer;
-    opacity: 0.8;
-  }
-</style>
-<script>
-  const preview = function preview() {
-    for (let i = 0; i < event.target.files.length; i++) {
-      let file = event.target.files[i]
-      const reader = new FileReader();
-      reader.onload = () => {
-        console.log(file.type)
-        let elementTypes = {
-          image: 'img',
-          video: 'video',
-          audio: 'audio',
-          file: 'a'
-        }
-        let element
-        // switch on file type to create element
-        switch(file.type) {
-          case 'image/jpeg':
-          case 'image/png':
-          case 'image/gif':
-            element = document.createElement(elementTypes.image)
-            element.setAttribute('style', 'background-image: url(' + reader.result + ')');
-            break;
-          case 'video/mp4':
-          case 'video/quicktime':
-            element = document.createElement("i");
-            element.classList.add('bi', 'bi-file-earmark-play-fill', 'video-preview-icon');
-            break;
-          case 'audio/mpeg':
-          case 'audio/mp3':
-          case 'audio/wav':
-            // create element with a bootstrap icon for audio
-            element = document.createElement("i")
-            element.classList.add("bi", "bi-file-earmark-music-fill", "audio-preview-icon")
-            break;
-          default:
-            element = document.createElement("i")
-            element.classList.add("bi", "bi-file-check-fill", "file-preview-icon")
-
-        }
-        element.src = reader.result
-        element.setAttribute('href', reader.result);
-        element.setAttribute('target', '_blank');
-        element.classList.add('attachment-preview');
-        // add onClick handler to remove element
-        element.onclick = (e) => removePreview(e)
-
-        document.getElementById('attachment-previews').appendChild(element);
-      };
-      reader.readAsDataURL(file);
-    }
-  }
-  /**
-   * On click remove the preview element, and remove the file from the form
-   */
-  const removePreview = function removePreview(event) {
-    event.target.parentNode.removeChild(event.target);
-    const dataTransfer = new DataTransfer;
-
-    let fileInput = document.getElementById('message_attachments')
-    let files = fileInput.files
-    let filesArray = Array.from(files)
-    let index = filesArray.indexOf(event.target)
-    filesArray.splice(index, 1)
-
-    filesArray.forEach(file => dataTransfer.items.add(file))
-    fileInput.files = dataTransfer.files
-  }
-  /**
-   * Clear the preview elements after submit
-   */
-  const clearPreviews = function clearPreviews() {
-    document.getElementById('attachment-previews').innerHTML = ''
-  }
-</script>
+<script></script>

@@ -1,0 +1,12 @@
+    // let fileInput = document.getElementById("message_attachments");
+    // let files = fileInput.files;
+    // let filesArray = Array.from(files);
+
+    // filesArray = filesArray.filter((file) => {
+    //   let filename = target.getAttribute("href") || target.getAttribute("src");
+    //   return file.name !== filename;
+    // });
+
+    // target.parentNode.removeChild(target);
+    // filesArray.forEach((file) => dataTransfer.items.add(file));
+    // fileInput.files = dataTransfer.files;

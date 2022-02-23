@@ -37,3 +37,5 @@
 /tmp/cache/*
 !/tmp/cache/*
 */tmp/*
+
+*/storage/*
