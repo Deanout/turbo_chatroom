@@ -15,5 +15,8 @@ export default class extends Controller {
   /** Custom function */
   resetScroll() {
     messages.scrollTop = messages.scrollHeight - messages.clientHeight;
+    setTimeout(function () {
+      messages.scrollTop = messages.scrollHeight - messages.clientHeight;
+    }, 500);
   }
 }

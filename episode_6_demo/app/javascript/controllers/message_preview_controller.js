@@ -11,6 +11,7 @@ export default class extends Controller {
    * This panel is used to display the file(s) that is/are being uploaded.
    */
   preview() {
+    this.clearPreviews();
     for (let i = 0; i < this.targets.element.files.length; i++) {
       let file = this.targets.element.files[i];
       const reader = new FileReader();
