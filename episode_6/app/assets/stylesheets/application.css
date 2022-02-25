@@ -1,0 +1,119 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+body {
+  overflow: hidden;
+}
+.msg-form {
+  width: 100%;
+  height: 56px;
+  padding: 10px;
+}
+
+#single_room {
+  height: calc(100vh - 150px);
+}
+
+#messages {
+  height: calc(100vh - 150px);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#room_container {
+  height: 100vh;
+  margin-right: 0px !important;
+}
+
+#side_panel {
+  height: calc(100vh - 55px);
+  margin-right: 0px !important;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  margin-bottom: 55px;
+}
+#chatroom_container {
+  height: 100vh;
+  margin-right: 0px !important;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.msg-content {
+  width: 80%;
+  margin-right: 5px;
+}
+.message-box {
+  word-wrap: break-word;
+  width: fit-content;
+  max-width: 40%;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: #555555;
+}
+
+.user_row {
+  height: 50px;
+  padding: 10px;
+  border-bottom: 1px solid #555555;
+}
+
+.username {
+  overflow: hidden;
+}
+
+.chat_pfp {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.user_list_item {
+  height: 55px;
+  background-color: #343a40 !important;
+}
+.room_list_item {
+  height: 55px;
+  background-color: #343a40 !important;
+  color: #fff;
+}
+
+.name {
+  margin-top: 15px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+.time {
+  padding-top: 0px;
+  margin-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+.icon-container {
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+.status-circle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: grey;
+  border: 2px solid white;
+  bottom: 10px;
+  right: 10px;
+  position: absolute;
+}
