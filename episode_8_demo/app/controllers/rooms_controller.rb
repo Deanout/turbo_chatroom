@@ -5,7 +5,7 @@ class RoomsController < ApplicationController
     @room = Room.new
     @rooms = Room.public_rooms
 
-    @users = User.all_except(current_user)
+    # @users = User.all_except(current_user)
     render 'index'
   end
 
@@ -21,7 +21,7 @@ class RoomsController < ApplicationController
     @pagy, messages = pagy(pagy_messages, items: 10)
     @messages = messages.reverse
 
-    @users = User.all_except(current_user)
+    # @users = User.all_except(current_user)
     render 'index'
   end
 
