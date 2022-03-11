@@ -1,0 +1,27 @@
+<div class="cont-<%=message.user.id%>">
+  <div class="message-box msg-<%= message.user.id %>">
+    <div class="d-flex align-items-center">
+      <%= image_tag(message.user.chat_avatar, class:'chat_pfp') %>
+      <div>
+        <h6 class="name"> <%= message.user.email %></h6>
+        <p class="time"><%= time_ago_in_words(message.created_at) %> ago</p>
+      </div>
+    </div>
+    <div>
+      <%= message.body %>
+    </div>
+    <% if message.attachments.attached? %>
+      <% message.attachments.each_with_index do |attachment, index| %>
+        <% if attachment.image? %>
+          <%= image_tag(message.chat_attachment(index)) %>
+        <% elsif attachment.video? %>
+          <%= video_tag(url_for(attachment), style:'height:auto; width:100%', controls:'') %>
+        <% elsif attachment.audio? %>
+          <%= audio_tag(url_for(attachment), controls: '') %>
+        <% else %>
+          <%= link_to attachment.filename, url_for(attachment), style:"text-decoration: none; color: #fff" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
