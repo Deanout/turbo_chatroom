@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include RoomsHelper
   def show
     @user = User.find(params[:id])
     @users = User.all_except(current_user)
@@ -10,10 +11,10 @@ class UsersController < ApplicationController
 
     @message = Message.new
 
-    pagy_messages = @single_room.messages.order(created_at: :desc)
+    pagy_messages = @single_room.messages.includes(:user).order(created_at: :desc)
     @pagy, messages = pagy(pagy_messages, items: 10)
     @messages = messages.reverse
-
+    @rooms = search_rooms
     render 'rooms/index'
   end
 
