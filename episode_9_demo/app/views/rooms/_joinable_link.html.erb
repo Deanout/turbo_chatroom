@@ -1,0 +1,5 @@
+<% if current_user.has_joined_room(room) %>
+  <%= link_to "-", leave_room_path(room), method: :delete %>
+<% else %>
+  <%= link_to "+", join_room_path(room), method: :post %>
+<% end %>
