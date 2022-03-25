@@ -34,7 +34,7 @@ class Room < ApplicationRecord
 
     target = "room_#{id} last_message"
 
-    broadcast_replace_to('rooms',
+    broadcast_update_to('rooms',
                          target: target,
                          partial: 'rooms/last_message',
                          locals: {
