@@ -1,0 +1,10 @@
+<% unless last_message.nil? %>
+  <div class="row">
+    <div class="col-12 d-flex align-items-center justify-content-between">
+      <em class="last-message"><%= "#{last_message.user.email} sent a message".truncate(40) %></em>
+      <%= content_tag(:em, class:"last-message-time", data: {time: last_message.created_at.to_i}) do %>
+        <%= "#{time_ago_in_words(last_message.created_at)} ago"%>
+      <% end %>
+    </div>
+  </div>
+<% end %>
