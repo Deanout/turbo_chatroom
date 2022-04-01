@@ -1,0 +1,21 @@
+<% unless last_message.nil? %>
+  <div class="row">
+    <div class="col-12 d-flex align-items-center justify-content-between">
+      <em class="last-message">
+        <% if sender.id.eql?(Current.user.id) %>
+          <%= "You: #{last_message.body}".truncate(40) %>
+        <% else %>
+          <%= "#{sender.email}: #{last_message.body}".truncate(40) %>
+        <% end %>
+      </em>
+      <%= content_tag(:em, class:"last-message-time", 
+                data: {
+                time: last_message.created_at.to_i
+                }) do %>
+        <em class="last-message">
+          <%= "#{time_ago_in_words(last_message.created_at)} ago"%>
+        </em>
+      <% end %>
+    </div>
+  </div>
+<% end %>

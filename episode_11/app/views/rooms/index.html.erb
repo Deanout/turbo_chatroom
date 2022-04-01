@@ -16,14 +16,14 @@
     </li>
     <h4> Users </h4>
     <%= turbo_stream_from "users" %>
-    <div id="users">
-      <%= render @users %>
+    <div id="users" data-controller="user-list">
+      <%= render "users/users", users: @users %>
     </div>
     <h4> Rooms </h4>
     <%= turbo_stream_from "rooms" %>
     <%= render 'layouts/new_room_form' %>
     <%= render 'rooms/search_form' %>
-    <div id="rooms">
+    <div id="rooms" data-controller="room-list">
       <%= render "rooms/rooms", rooms: @joined_rooms, user: current_user %>
     </div>
   </div>
