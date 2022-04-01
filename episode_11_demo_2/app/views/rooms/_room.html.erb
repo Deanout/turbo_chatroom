@@ -1,0 +1,6 @@
+<%= turbo_frame_tag dom_id(room) do %>
+  <%= render 'rooms/room_container',
+        room: room,
+        last_message: last_message, 
+        user: user %>
+<% end %>
