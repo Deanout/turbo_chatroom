@@ -1,0 +1,4 @@
+<li class="list-group-item d-flex align-items-center justify-content-between room_list_item">
+  <%= link_to room.name, room, data: {turbo: "false"}, class: "ms-2 me-auto" %>
+  <%= render 'rooms/joinable_link', room: room %>
+</li>
