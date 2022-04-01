@@ -5,7 +5,7 @@ export default class extends Controller {
   initialize() {
     console.log("This was called?");
     const users = document.getElementById("users");
-
+    this.initialModifyUsers(users);
     this.mutationObserver(users);
   }
 
@@ -21,7 +21,7 @@ export default class extends Controller {
           console.log("A child node has been added or removed.");
           const sortedList = sortByLastMessage(targetNode);
 
-          modifyUsers(sortedList, observer, targetNode, config);
+          modifyUsers(sortedList, targetNode, observer, config);
         } else if (mutation.type === "attributes") {
           console.log(
             "The " + mutation.attributeName + " attribute was modified."
@@ -35,9 +35,16 @@ export default class extends Controller {
     // Start observing the target node for configured mutations
     observer.observe(targetNode, config);
   }
+  initialModifyUsers(users) {
+    const sortedList = sortByLastMessage(users);
+    users.innerHTML = "";
+    sortedList.forEach((user) => {
+      users.appendChild(user);
+    });
+  }
 }
 
-function modifyUsers(userList, observer, targetNode, config) {
+function modifyUsers(userList, targetNode, observer, config) {
   observer.disconnect();
   console.log("Modifying users");
   targetNode.innerHTML = "";
@@ -51,22 +58,21 @@ function modifyUsers(userList, observer, targetNode, config) {
  * Method that sorts the room list by the last-message timestamp
  */
 function sortByLastMessage(users) {
-  console.log("SORTING");
-
   const userList = users.querySelectorAll(".user");
 
   const sortedList = Array.from(userList).sort((a, b) => {
-    const aLastMessage = a.querySelector(".last-message-time").dataset.time;
-    const bLastMessage = b.querySelector(".last-message-time").dataset.time;
+    const aLastMessage = a.querySelector(".last-message-time")?.dataset?.time;
+    const bLastMessage = b.querySelector(".last-message-time")?.dataset?.time;
     console.log("A: " + aLastMessage);
     console.log("B: " + bLastMessage);
-
-    if (aLastMessage > bLastMessage) {
-      return -1;
-    } else if (aLastMessage < bLastMessage) {
+    if (a.querySelector(".last-message-time")?.dataset?.time === undefined) {
       return 1;
+    } else if (
+      b.querySelector(".last-message-time")?.dataset?.time === undefined
+    ) {
+      return -1;
     } else {
-      return 0;
+      return aLastMessage > bLastMessage ? -1 : 1;
     }
   });
   return sortedList;

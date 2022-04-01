@@ -3,10 +3,10 @@
   data: { controller: 'debounce' },
   id:"room_search_form" do |form| %>
     <%= form.search_field :name_search, 
-    value: params[:name_search], 
-    class:"room_search_field",
-    placeholder:"Search Rooms to Join...", 
-    data: { action: "input->debounce#search" } %>
+      value: params[:name_search], 
+      class:"room_search_field",
+      placeholder:"Search Rooms to Join...", 
+      data: { action: "input->debounce#search" } %>
   <% end %>
   <div id="search_results">
     <%= render 'rooms/search_results', rooms: @rooms %>

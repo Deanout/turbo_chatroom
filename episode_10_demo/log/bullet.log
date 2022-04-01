@@ -1,0 +1,49 @@
+2022-03-23 18:25:21[WARN] user: dean
+GET /rooms/1
+AVOID eager loading detected
+  Message => [:attachments_blobs]
+  Remove from your query: .includes([:attachments_blobs])
+Call stack
+
+2022-03-23 18:25:46[WARN] user: dean
+GET /rooms/1
+USE eager loading detected
+  Message => [:attachments_attachments]
+  Add to your query: .includes([:attachments_attachments])
+Call stack
+  /code/youtube/rails/turbochat/episode_10_demo/app/views/messages/_message.html.erb:13:in `_app_views_messages__message_html_erb__1107674904966400442_30540'
+  /code/youtube/rails/turbochat/episode_10_demo/app/views/rooms/index.html.erb:40:in `_app_views_rooms_index_html_erb__1227463224925439944_30280'
+  /code/youtube/rails/turbochat/episode_10_demo/app/controllers/rooms_controller.rb:28:in `show'
+
+2022-03-23 18:25:47[WARN] user: dean
+GET /rooms/1
+USE eager loading detected
+  Message => [:attachments_attachments]
+  Add to your query: .includes([:attachments_attachments])
+Call stack
+  /code/youtube/rails/turbochat/episode_10_demo/app/views/messages/_message.html.erb:13:in `_app_views_messages__message_html_erb__1107674904966400442_30540'
+  /code/youtube/rails/turbochat/episode_10_demo/app/views/rooms/index.html.erb:40:in `_app_views_rooms_index_html_erb__1227463224925439944_30280'
+  /code/youtube/rails/turbochat/episode_10_demo/app/controllers/rooms_controller.rb:28:in `show'
+
+2022-03-23 18:26:37[WARN] user: dean
+GET /rooms/1
+USE eager loading detected
+  ActiveStorage::Attachment => [:blob]
+  Add to your query: .includes([:blob])
+Call stack
+  /code/youtube/rails/turbochat/episode_10_demo/app/views/messages/_message.html.erb:17:in `block in _app_views_messages__message_html_erb__1107674904966400442_30540'
+  /code/youtube/rails/turbochat/episode_10_demo/app/views/messages/_message.html.erb:14:in `_app_views_messages__message_html_erb__1107674904966400442_30540'
+  /code/youtube/rails/turbochat/episode_10_demo/app/views/rooms/index.html.erb:40:in `_app_views_rooms_index_html_erb__1227463224925439944_30280'
+  /code/youtube/rails/turbochat/episode_10_demo/app/controllers/rooms_controller.rb:28:in `show'
+
+2022-03-23 18:27:25[WARN] user: dean
+GET /rooms/1
+USE eager loading detected
+  ActiveStorage::Attachment => [:blob]
+  Add to your query: .includes([:blob])
+Call stack
+  /code/youtube/rails/turbochat/episode_10_demo/app/views/messages/_message.html.erb:17:in `block in _app_views_messages__message_html_erb__1107674904966400442_30540'
+  /code/youtube/rails/turbochat/episode_10_demo/app/views/messages/_message.html.erb:14:in `_app_views_messages__message_html_erb__1107674904966400442_30540'
+  /code/youtube/rails/turbochat/episode_10_demo/app/views/rooms/index.html.erb:40:in `_app_views_rooms_index_html_erb__1227463224925439944_30280'
+  /code/youtube/rails/turbochat/episode_10_demo/app/controllers/rooms_controller.rb:28:in `show'
+

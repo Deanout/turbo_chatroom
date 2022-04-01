@@ -1,0 +1,6 @@
+<% rooms.each do |room| %>
+  <%= render 'rooms/room',
+  room: room, 
+  last_message: Message.find_by_id(room.last_message_id),
+  user: current_user %>
+<% end %>

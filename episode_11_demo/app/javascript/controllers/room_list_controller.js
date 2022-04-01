@@ -5,7 +5,7 @@ export default class extends Controller {
   initialize() {
     console.log("This was called?");
     const rooms = document.getElementById("rooms");
-
+    this.initialModifyRooms(rooms);
     this.mutationObserver(rooms);
   }
 
@@ -36,6 +36,13 @@ export default class extends Controller {
     // Start observing the target node for configured mutations
     observer.observe(targetNode, config);
   }
+  initialModifyRooms(rooms) {
+    const sortedList = sortByLastMessage(rooms);
+    rooms.innerHTML = "";
+    sortedList.forEach((room) => {
+      rooms.appendChild(room);
+    });
+  }
 }
 
 function modifyRooms(rooms, roomList, observer, targetNode, config) {
@@ -57,17 +64,19 @@ function sortByLastMessage(rooms) {
   const roomList = rooms.querySelectorAll(".room");
 
   const sortedList = Array.from(roomList).sort((a, b) => {
-    const aLastMessage = a.querySelector(".last-message-time").dataset.time;
-    const bLastMessage = b.querySelector(".last-message-time").dataset.time;
+    const aLastMessage = a.querySelector(".last-message-time")?.dataset?.time;
+    const bLastMessage = b.querySelector(".last-message-time")?.dataset?.time;
     console.log("A: " + aLastMessage);
     console.log("B: " + bLastMessage);
 
-    if (aLastMessage > bLastMessage) {
-      return -1;
-    } else if (aLastMessage < bLastMessage) {
+    if (a.querySelector(".last-message-time")?.dataset?.time === undefined) {
       return 1;
+    } else if (
+      b.querySelector(".last-message-time")?.dataset?.time === undefined
+    ) {
+      return -1;
     } else {
-      return 0;
+      return aLastMessage > bLastMessage ? -1 : 1;
     }
   });
   return sortedList;

@@ -1,0 +1,6 @@
+<% rooms.each do |room| %>
+  <%= render "rooms/room_container", 
+    room: room, 
+    user: current_user, 
+    last_message: room.latest_message %>
+<% end %>

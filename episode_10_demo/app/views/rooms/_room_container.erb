@@ -1,0 +1,16 @@
+<li class="list-group-item room_list_item">
+  <div class="row">
+    <div class="col-12 d-flex align-items-center justify-content-between">
+      <%= link_to room.name, room_path(room,  name_search: params[:name_search]), data: {turbo: "false"}, class: "ms-2 me-auto" %>
+      <%= render 'rooms/joinable_link', room: room, user: user %>
+    </div>
+  </div>
+  <% unless last_message.nil? %>
+    <div class="row">
+      <div class="col-12 d-flex align-items-center justify-content-between">
+        <em class="last-message"><%= "#{last_message.user.email} sent a message".truncate(40) %></em>
+        <em class="last-message"><%= "#{time_ago_in_words(last_message.created_at)} ago" %></em>
+      </div>
+    </div>
+  <% end %>
+</li>
