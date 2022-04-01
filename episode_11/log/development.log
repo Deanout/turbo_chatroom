@@ -23087,3 +23087,488 @@ AppearanceChannel#away
 [ActionCable] Broadcasting to user_status: "<turbo-stream action=\"replace\" target=\"user_1\"><template><turbo-frame id=\"user_status\"></turbo-frame>\n<div class=\"status-circle bg-warning\" id=\"user_1\"></div>\n</template></turbo-stream>"
 Turbo::StreamsChannel transmitting "<turbo-stream action=\"replace\" target=\"user_1\"><template><turbo-frame id=\"user_status\"></turbo-frame>\n<div class=\"status-circle bg-warning\" id=\"user_1\"></div>\n</template></turbo-stream>" (via streamed from user_status)
 Turbo::StreamsChannel transmitting "<turbo-stream action=\"replace\" target=\"user_1\"><template><turbo-frame id=\"user_status\"></turbo-frame>\n<div class=\"status-circle bg-warning\" id=\"user_1\"></div>\n</template></turbo-stream>" (via streamed from user_status)
+  [1m[36mUser Update All (1.8ms)[0m  [1m[33mUPDATE "users" SET "status" = $1[0m  [["status", 0]]
+  ↳ config/initializers/user_status.rb:6:in `block in <class:UserStatus>'
+Started GET "/user/2" for ::1 at 2022-04-01 00:10:22 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `show'
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."name" = $1 ORDER BY "rooms"."id" ASC LIMIT $2[0m  [["name", "private_1_2"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mMessage Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."room_id" = $1[0m  [["room_id", 4]]
+  ↳ app/controllers/users_controller.rb:16:in `show'
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = $1 ORDER BY "messages"."created_at" DESC LIMIT $2 OFFSET $3[0m  [["room_id", 4], ["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/controllers/users_controller.rb:17:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/index.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::VariantRecord Load (0.3ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  Rendered users/_status.html.erb (Duration: 0.5ms | Allocations: 260)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" != $1[0m  [["id", 1]]
+  ↳ app/views/rooms/index.html.erb:20
+  [1m[36mParticipant Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "participants" WHERE "participants"."room_id" = $1 AND "participants"."user_id" = $2 LIMIT $3[0m  [["room_id", 4], ["user_id", 4], ["LIMIT", 1]]
+  ↳ app/models/room.rb:23:in `participant?'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::VariantRecord Load (0.3ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 17], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  Rendered users/_status.html.erb (Duration: 0.1ms | Allocations: 50)
+  [1m[36mParticipant Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "participants" WHERE "participants"."room_id" = $1 AND "participants"."user_id" = $2 LIMIT $3[0m  [["room_id", 4], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/room.rb:23:in `participant?'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::VariantRecord Load (0.2ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 3], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  Rendered users/_status.html.erb (Duration: 0.0ms | Allocations: 45)
+  [1m[36mParticipant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "participants" WHERE "participants"."room_id" = $1 AND "participants"."user_id" = $2 LIMIT $3[0m  [["room_id", 4], ["user_id", 2], ["LIMIT", 1]]
+  ↳ app/models/room.rb:23:in `participant?'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::VariantRecord Load (0.3ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 12], ["variation_digest", "ZmDfamq3DaAOqmqEnqBAWE4VJTE="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  Rendered users/_status.html.erb (Duration: 0.1ms | Allocations: 45)
+  Rendered collection of users/_user.html.erb [3 times] (Duration: 24.2ms | Allocations: 16339)
+  Rendered layouts/_new_room_form.html.erb (Duration: 3.2ms | Allocations: 2688)
+  Rendered rooms/_search_results.html.erb (Duration: 0.3ms | Allocations: 228)
+  Rendered rooms/_search_form.html.erb (Duration: 1.4ms | Allocations: 1536)
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" INNER JOIN "joinables" ON "rooms"."id" = "joinables"."room_id" WHERE "joinables"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/rooms/_rooms.html.erb:1
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = $1 ORDER BY "messages"."created_at" DESC LIMIT $2[0m  [["room_id", 1], ["LIMIT", 1]]
+  ↳ app/models/room.rb:27:in `latest_message'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ app/models/room.rb:27:in `latest_message'
+  Rendered rooms/_joinable_link.html.erb (Duration: 0.5ms | Allocations: 315)
+  Rendered rooms/_last_message.html.erb (Duration: 0.6ms | Allocations: 419)
+  Rendered rooms/_room_container.html.erb (Duration: 2.2ms | Allocations: 1358)
+  Rendered rooms/_room.html.erb (Duration: 3.1ms | Allocations: 1720)
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = $1 ORDER BY "messages"."created_at" DESC LIMIT $2[0m  [["room_id", 2], ["LIMIT", 1]]
+  ↳ app/models/room.rb:27:in `latest_message'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ app/models/room.rb:27:in `latest_message'
+  Rendered rooms/_joinable_link.html.erb (Duration: 0.1ms | Allocations: 82)
+  Rendered rooms/_last_message.html.erb (Duration: 0.3ms | Allocations: 79)
+  Rendered rooms/_room_container.html.erb (Duration: 1.0ms | Allocations: 391)
+  Rendered rooms/_room.html.erb (Duration: 1.2ms | Allocations: 496)
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = $1 ORDER BY "messages"."created_at" DESC LIMIT $2[0m  [["room_id", 10], ["LIMIT", 1]]
+  ↳ app/models/room.rb:27:in `latest_message'
+  Rendered rooms/_joinable_link.html.erb (Duration: 0.1ms | Allocations: 78)
+  Rendered rooms/_last_message.html.erb (Duration: 0.0ms | Allocations: 12)
+  Rendered rooms/_room_container.html.erb (Duration: 0.5ms | Allocations: 320)
+  Rendered rooms/_room.html.erb (Duration: 0.7ms | Allocations: 425)
+  Rendered rooms/_rooms.html.erb (Duration: 18.2ms | Allocations: 12745)
+  Rendered messages/_pager.html.erb (Duration: 0.9ms | Allocations: 956)
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 140], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 142], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 143], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 144], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 145], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 146], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 147], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 148], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 149], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 150], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 150], ["record_type", "Message"], ["name", "attachments"]]
+  ↳ app/views/messages/_message.html.erb:14
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:15
+  [1m[36mActiveStorage::VariantRecord Load (0.3ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 31], ["variation_digest", "G0Vst4geCVOXNaQRJ+bGaGFNhTs="], ["LIMIT", 1]]
+  ↳ app/models/message.rb:17:in `chat_attachment'
+  Rendered collection of messages/_message.html.erb [10 times] (Duration: 35.1ms | Allocations: 26750)
+  Rendered layouts/_new_message_form.html.erb (Duration: 2.2ms | Allocations: 1510)
+  Rendered rooms/index.html.erb within layouts/application (Duration: 134.3ms | Allocations: 103844)
+  Rendered layouts/_navbar.html.erb (Duration: 0.6ms | Allocations: 179)
+  Rendered layout layouts/application.html.erb (Duration: 229.7ms | Allocations: 164191)
+Completed 200 OK in 284ms (Views: 214.9ms | ActiveRecord: 25.3ms | Allocations: 214128)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhPR1p0Y25Wb05HUTBZV3QxY2poaWNtTXhabmh4YURKNE5ERTVkUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpQVlwcGJteHBibVU3SUdacGJHVnVZVzFsUFNJMk56Y3lNemcwT1Y4eE56QXdNems0TnpjME5qTXdNVEJmTlRjd05ESTNNRFEyTnpZM09UVXhOVGc0TVY5dUxtcHdaeUk3SUdacGJHVnVZVzFsS2oxVlZFWXRPQ2NuTmpjM01qTTRORGxmTVRjd01ETTVPRGMzTkRZek1ERXdYelUzTURReU56QTBOamMyTnprMU1UVTRPREZmYmk1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0wNC0wMVQwNDoxMzoyMi43OTdaIiwicHVyIjoiYmxvYl9rZXkifX0=--a76ecd7537fb6bd62086bd0084ae964b971b6654/67723849_170039877463010_5704270467679515881_n.jpg" for ::1 at 2022-04-01 00:10:22 -0400
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhPRGxrYlhKcFp6SnpialowYW10eU56bHpZV3hwT0RBMmN6YzJiZ1k2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SbFptRjFiSFJmY0hKdlptbHNaUzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyUmxabUYxYkhSZmNISnZabWxzWlM1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0wNC0wMVQwNDoxMzoyMi44NTdaIiwicHVyIjoiYmxvYl9rZXkifX0=--0b5bb050bfdbf1e0bd0eedf3fe6772cf977a4f34/default_profile.jpg" for 127.0.0.1 at 2022-04-01 00:10:22 -0400
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhkWE41WlhJM1ozazFOSFZyWkdSbWJ6WXpNR1J1TVRNMVl6TTRkUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVVdsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SW1SbFptRjFiSFJmY0hKdlptbHNaUzVxY0djaU95Qm1hV3hsYm1GdFpTbzlWVlJHTFRnbkoyUmxabUYxYkhSZmNISnZabWxzWlM1cWNHY0dPd1pVT2hGamIyNTBaVzUwWDNSNWNHVkpJZzlwYldGblpTOXFjR1ZuQmpzR1ZEb1JjMlZ5ZG1salpWOXVZVzFsT2dwc2IyTmhiQT09IiwiZXhwIjoiMjAyMi0wNC0wMVQwNDoxMzozMi4yODlaIiwicHVyIjoiYmxvYl9rZXkifX0=--818d62b251d91e70b732f56a4df2ac82da39faa7/default_profile.jpg" for ::1 at 2022-04-01 00:10:22 -0400
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhiMll3WTJKdmVuZDJNalJyTXpaaGNUZHFOV3h4Y0RSblozZDJkQVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVjJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWtOb2NtbHpkRzFoY3lCUWNtOW1hV3hsTG5CdVp5STdJR1pwYkdWdVlXMWxLajFWVkVZdE9DY25RMmh5YVhOMGJXRnpKVEl3VUhKdlptbHNaUzV3Ym1jR093WlVPaEZqYjI1MFpXNTBYM1I1Y0dWSklnNXBiV0ZuWlM5d2JtY0dPd1pVT2hGelpYSjJhV05sWDI1aGJXVTZDbXh2WTJGcyIsImV4cCI6IjIwMjItMDQtMDFUMDQ6MTM6MjIuODY1WiIsInB1ciI6ImJsb2Jfa2V5In19--d164b176190a45f0ab3b364804332bb64706c0b9/Christmas%20Profile.png" for ::1 at 2022-04-01 00:10:22 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"default_profile"}
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"67723849_170039877463010_5704270467679515881_n"}
+Completed 200 OK in 9ms (ActiveRecord: 0.0ms | Allocations: 1357)
+
+
+Completed 404 Not Found in 12ms (ActiveRecord: 0.0ms | Allocations: 1989)
+
+
+Started GET "/rails/active_storage/disk/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdDVG9JYTJWNVNTSWhObUprY2poME0yVjVjbVpuTW5NMU1EWXpOR1p4WVRKdGRYTnlaUVk2QmtWVU9oQmthWE53YjNOcGRHbHZia2tpVDJsdWJHbHVaVHNnWm1sc1pXNWhiV1U5SWxCbGNtWnZjbTFoYm1ObElEa3VjRzVuSWpzZ1ptbHNaVzVoYldVcVBWVlVSaTA0SnlkUVpYSm1iM0p0WVc1alpTVXlNRGt1Y0c1bkJqc0dWRG9SWTI5dWRHVnVkRjkwZVhCbFNTSU9hVzFoWjJVdmNHNW5CanNHVkRvUmMyVnlkbWxqWlY5dVlXMWxPZ3BzYjJOaGJBPT0iLCJleHAiOiIyMDIyLTA0LTAxVDA0OjE1OjEzLjMzM1oiLCJwdXIiOiJibG9iX2tleSJ9fQ==--e27ec960fbc422011b7fe019502c1e7bfe17a907/Performance%209.png" for ::1 at 2022-04-01 00:10:22 -0400
+Processing by ActiveStorage::DiskController#show as JPEG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"default_profile"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 237)
+
+
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"Christmas Profile"}
+Processing by ActiveStorage::DiskController#show as PNG
+  Parameters: {"encoded_key"=>"[FILTERED]", "filename"=>"Performance 9"}
+Completed 200 OK in 2ms (ActiveRecord: 0.0ms | Allocations: 465)
+
+
+Completed 404 Not Found in 2ms (ActiveRecord: 0.0ms | Allocations: 610)
+
+
+Started GET "/cable" for ::1 at 2022-04-01 00:10:23 -0400
+Started GET "/cable/" [WebSocket] for ::1 at 2022-04-01 00:10:23 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/application_cable/connection.rb:12:in `find_verified_user'
+Registered connection (Z2lkOi8vdHVyYm9jaGF0L1VzZXIvMQ)
+AppearanceChannel is transmitting the subscription confirmation
+AppearanceChannel is streaming from appearance_channel
+AppearanceChannel#online
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/channels/appearance_channel.rb:34:in `broadcast_new_status'
+Started GET "/cable" for ::1 at 2022-04-01 00:10:23 -0400
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "status" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2022-04-01 04:10:23.182982"], ["status", 2], ["id", 1]]
+  ↳ app/channels/appearance_channel.rb:34:in `broadcast_new_status'
+Started GET "/cable/" [WebSocket] for ::1 at 2022-04-01 00:10:23 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+  [1m[36mTRANSACTION (4.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/channels/appearance_channel.rb:34:in `broadcast_new_status'
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:53:in `add_default_avatar'
+  Rendered users/_status.html.erb (Duration: 0.1ms | Allocations: 84)
+[ActionCable] Broadcasting to user_status: "<turbo-stream action=\"replace\" target=\"user_1\"><template><turbo-frame id=\"user_status\"></turbo-frame>\n<div class=\"status-circle bg-success\" id=\"user_1\"></div>\n</template></turbo-stream>"
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/channels/application_cable/connection.rb:12:in `find_verified_user'
+Registered connection (Z2lkOi8vdHVyYm9jaGF0L1VzZXIvMQ)
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from user_status
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from users
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from rooms
+Turbo::StreamsChannel is transmitting the subscription confirmation
+Turbo::StreamsChannel is streaming from Z2lkOi8vdHVyYm9jaGF0L1Jvb20vNA
+AppearanceChannel#online
+  Rendered users/_status.html.erb (Duration: 0.1ms | Allocations: 42)
+[ActionCable] Broadcasting to user_status: "<turbo-stream action=\"replace\" target=\"user_1\"><template><turbo-frame id=\"user_status\"></turbo-frame>\n<div class=\"status-circle bg-success\" id=\"user_1\"></div>\n</template></turbo-stream>"
+AppearanceChannel#online
+  Rendered users/_status.html.erb (Duration: 0.0ms | Allocations: 40)
+[ActionCable] Broadcasting to user_status: "<turbo-stream action=\"replace\" target=\"user_1\"><template><turbo-frame id=\"user_status\"></turbo-frame>\n<div class=\"status-circle bg-success\" id=\"user_1\"></div>\n</template></turbo-stream>"
+Turbo::StreamsChannel transmitting "<turbo-stream action=\"replace\" target=\"user_1\"><template><turbo-frame id=\"user_status\"></turbo-frame>\n<div class=\"status-circle bg-success\" id=\"user_1\"></div>\n</template></turbo-stream>" (via streamed from user_status)
+Turbo::StreamsChannel transmitting "<turbo-stream action=\"replace\" target=\"user_1\"><template><turbo-frame id=\"user_status\"></turbo-frame>\n<div class=\"status-circle bg-success\" id=\"user_1\"></div>\n</template></turbo-stream>" (via streamed from user_status)
+AppearanceChannel#online
+  Rendered users/_status.html.erb (Duration: 0.1ms | Allocations: 40)
+[ActionCable] Broadcasting to user_status: "<turbo-stream action=\"replace\" target=\"user_1\"><template><turbo-frame id=\"user_status\"></turbo-frame>\n<div class=\"status-circle bg-success\" id=\"user_1\"></div>\n</template></turbo-stream>"
+Turbo::StreamsChannel transmitting "<turbo-stream action=\"replace\" target=\"user_1\"><template><turbo-frame id=\"user_status\"></turbo-frame>\n<div class=\"status-circle bg-success\" id=\"user_1\"></div>\n</template></turbo-stream>" (via streamed from user_status)
+AppearanceChannel#online
+  Rendered users/_status.html.erb (Duration: 0.1ms | Allocations: 40)
+[ActionCable] Broadcasting to user_status: "<turbo-stream action=\"replace\" target=\"user_1\"><template><turbo-frame id=\"user_status\"></turbo-frame>\n<div class=\"status-circle bg-success\" id=\"user_1\"></div>\n</template></turbo-stream>"
+AppearanceChannel#online
+  Rendered users/_status.html.erb (Duration: 0.1ms | Allocations: 40)
+[ActionCable] Broadcasting to user_status: "<turbo-stream action=\"replace\" target=\"user_1\"><template><turbo-frame id=\"user_status\"></turbo-frame>\n<div class=\"status-circle bg-success\" id=\"user_1\"></div>\n</template></turbo-stream>"
+Turbo::StreamsChannel transmitting "<turbo-stream action=\"replace\" target=\"user_1\"><template><turbo-frame id=\"user_status\"></turbo-frame>\n<div class=\"status-circle bg-success\" id=\"user_1\"></div>\n</template></turbo-stream>" (via streamed from user_status)
+Turbo::StreamsChannel transmitting "<turbo-stream action=\"replace\" target=\"user_1\"><template><turbo-frame id=\"user_status\"></turbo-frame>\n<div class=\"status-circle bg-success\" id=\"user_1\"></div>\n</template></turbo-stream>" (via streamed from user_status)
+Started POST "/rooms/4/messages" for ::1 at 2022-04-01 00:10:26 -0400
+Processing by MessagesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "message"=>{"attachments"=>["", #<ActionDispatch::Http::UploadedFile:0x00007f56c5a6e820 @tempfile=#<Tempfile:/tmp/RackMultipart20220401-44924-uivhz5.png>, @original_filename="Admin Part 7.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"message[attachments][]\"; filename=\"Admin Part 7.png\"\r\nContent-Type: image/png\r\n">], "body"=>""}, "commit"=>"Send", "room_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/messages_controller.rb:3:in `create'
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:3:in `create'
+  [1m[36mParticipant Load (0.3ms)[0m  [1m[34mSELECT "participants".* FROM "participants" WHERE "participants"."user_id" = $1 AND "participants"."room_id" = $2 ORDER BY "participants"."id" ASC LIMIT $3[0m  [["user_id", 1], ["room_id", 4], ["LIMIT", 1]]
+  ↳ app/models/message.rb:26:in `confirm_participant'
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("user_id", "room_id", "body", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 1], ["room_id", 4], ["body", ""], ["created_at", "2022-04-01 04:10:26.930150"], ["updated_at", "2022-04-01 04:10:26.930150"]]
+  ↳ app/controllers/messages_controller.rb:3:in `create'
+  [1m[36mActiveStorage::Blob Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_blobs" ("key", "filename", "content_type", "metadata", "service_name", "byte_size", "checksum", "created_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["key", "kl2b2oq80yb61lgpq3pj1vlgxdth"], ["filename", "Admin Part 7.png"], ["content_type", "image/png"], ["metadata", "{\"identified\":true}"], ["service_name", "local"], ["byte_size", 1829906], ["checksum", "9Z8NGGBeyQzt9JZ2YR3y6w=="], ["created_at", "2022-04-01 04:10:26.937248"]]
+  ↳ app/controllers/messages_controller.rb:3:in `create'
+  [1m[36mActiveStorage::Attachment Create (0.3ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("name", "record_type", "record_id", "blob_id", "created_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "attachments"], ["record_type", "Message"], ["record_id", 151], ["blob_id", 33], ["created_at", "2022-04-01 04:10:26.938816"]]
+  ↳ app/controllers/messages_controller.rb:3:in `create'
+  [1m[36mMessage Update (0.3ms)[0m  [1m[33mUPDATE "messages" SET "updated_at" = $1 WHERE "messages"."id" = $2[0m  [["updated_at", "2022-04-01 04:10:26.940331"], ["id", 151]]
+  ↳ app/controllers/messages_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/messages_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/message.rb:31:in `update_parent_room'
+  [1m[36mRoom Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "rooms" WHERE "rooms"."name" = $1 AND "rooms"."id" != $2 LIMIT $3[0m  [["name", "private_1_2"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/message.rb:31:in `update_parent_room'
+  [1m[36mRoom Update (0.3ms)[0m  [1m[33mUPDATE "rooms" SET "updated_at" = $1, "last_message_at" = $2 WHERE "rooms"."id" = $3[0m  [["updated_at", "2022-04-01 04:10:26.946819"], ["last_message_at", "2022-04-01 04:10:26.943998"], ["id", 4]]
+  ↳ app/models/message.rb:31:in `update_parent_room'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/message.rb:31:in `update_parent_room'
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = $1 ORDER BY "messages"."created_at" DESC LIMIT $2[0m  [["room_id", 4], ["LIMIT", 1]]
+  ↳ app/models/room.rb:27:in `latest_message'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ app/models/room.rb:27:in `latest_message'
+  Rendered rooms/_last_message.html.erb (Duration: 0.3ms | Allocations: 111)
+[ActionCable] Broadcasting to rooms: "<turbo-stream action=\"update\" target=\"room_4 last_message\"><template>  <div class=\"row\">\n    <div class=\"col-12 d-flex align-items-center justify-content-between\">\n      <em class=\"last-message\">dean@example.com sent a message</em>\n      <em class=\"last-message\">less than a minute...
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+Turbo::StreamsChannel transmitting "<turbo-stream action=\"update\" target=\"room_4 last_message\"><template>  <div class=\"row\">\n    <div class=\"col-12 d-flex align-items-center justify-content-between\">\n      <em class=\"last-message\">dean@example.com sent a message</em>\n      <em class=\"last-message\">less than a minute... (via streamed from rooms)
+  [1m[36mActiveStorage::Blob Load (0.7ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::VariantRecord Load (0.3ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::VariantRecord Load (0.2ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 33], ["variation_digest", "G0Vst4geCVOXNaQRJ+bGaGFNhTs="], ["LIMIT", 1]]
+  ↳ app/models/message.rb:17:in `chat_attachment'
+[36m  Disk Storage (0.3ms) [0m[34mDownloaded file from key: kl2b2oq80yb61lgpq3pj1vlgxdth[0m
+  Rendered messages/_message.html.erb (Duration: 11.1ms | Allocations: 7630)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 10.5ms | Allocations: 29182)
+
+
+  
+ActionView::Template::Error (ActiveStorage::FileNotFoundError):
+    13:     <% if message.attachments.attached? %>
+    14:       <% message.attachments.each_with_index do |attachment, index| %>
+    15:         <% if attachment.image? %>
+    16:           <%= image_tag(message.chat_attachment(index)) %>
+    17:         <% elsif attachment.video? %>
+    18:           <%= video_tag(url_for(attachment), style:'height:auto; width:100%', controls:'') %>
+    19:         <% elsif attachment.audio? %>
+  
+app/models/message.rb:17:in `chat_attachment'
+app/views/messages/_message.html.erb:16
+app/views/messages/_message.html.erb:14
+app/models/message.rb:9:in `block in <class:Message>'
+app/controllers/messages_controller.rb:3:in `create'
+Unsubscribing from channel: {"channel":"Turbo::StreamsChannel","signed_stream_name":"InVzZXJzIg==--0a4cafd9f04706169a05ab0bb14238d095c3f419aa3413d065af924eb0c2e24b"}
+Turbo::StreamsChannel stopped streaming from users
+Unsubscribing from channel: {"channel":"Turbo::StreamsChannel","signed_stream_name":"InVzZXJfc3RhdHVzIg==--3d39e51a0c64c114de4d9c6964ee8eb28ea6d1afe338b0ba374797b0a277baae"}
+Turbo::StreamsChannel stopped streaming from user_status
+Unsubscribing from channel: {"channel":"Turbo::StreamsChannel","signed_stream_name":"InJvb21zIg==--4edce82e4ae554228aef8568cd4e928d961abc8f42bad80d979cdf3010454855"}
+Turbo::StreamsChannel stopped streaming from rooms
+Unsubscribing from channel: {"channel":"Turbo::StreamsChannel","signed_stream_name":"IloybGtPaTh2ZEhWeVltOWphR0YwTDFKdmIyMHZOQSI=--60e30e823a2f5ca5a9c13f688ceec5243f60a9c7d1d067cf12268b7a5d9294e6"}
+Turbo::StreamsChannel stopped streaming from Z2lkOi8vdHVyYm9jaGF0L1Jvb20vNA
+  [1m[36mUser Update All (1.9ms)[0m  [1m[33mUPDATE "users" SET "status" = $1[0m  [["status", 0]]
+  ↳ config/initializers/user_status.rb:6:in `block in <class:UserStatus>'
+  [1m[36mUser Update All (1.7ms)[0m  [1m[33mUPDATE "users" SET "status" = $1[0m  [["status", 0]]
+  ↳ config/initializers/user_status.rb:6:in `block in <class:UserStatus>'
+Started GET "/user/2" for ::1 at 2022-04-01 00:25:59 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:4:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5:in `show'
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."name" = $1 ORDER BY "rooms"."id" ASC LIMIT $2[0m  [["name", "private_1_2"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:11:in `show'
+  [1m[36mMessage Count (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "messages" WHERE "messages"."room_id" = $1[0m  [["room_id", 4]]
+  ↳ app/controllers/users_controller.rb:16:in `show'
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = $1 ORDER BY "messages"."created_at" DESC LIMIT $2 OFFSET $3[0m  [["room_id", 4], ["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/controllers/users_controller.rb:17:in `show'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering rooms/index.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::VariantRecord Load (0.2ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  Rendered users/_status.html.erb (Duration: 0.6ms | Allocations: 260)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" != $1[0m  [["id", 1]]
+  ↳ app/views/rooms/index.html.erb:20
+  [1m[36mParticipant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "participants" WHERE "participants"."room_id" = $1 AND "participants"."user_id" = $2 LIMIT $3[0m  [["room_id", 4], ["user_id", 4], ["LIMIT", 1]]
+  ↳ app/models/room.rb:23:in `participant?'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 4], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::VariantRecord Load (0.2ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 17], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  Rendered users/_status.html.erb (Duration: 0.1ms | Allocations: 50)
+  [1m[36mParticipant Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "participants" WHERE "participants"."room_id" = $1 AND "participants"."user_id" = $2 LIMIT $3[0m  [["room_id", 4], ["user_id", 3], ["LIMIT", 1]]
+  ↳ app/models/room.rb:23:in `participant?'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 3], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Blob Load (0.3ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::VariantRecord Load (0.3ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 3], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  Rendered users/_status.html.erb (Duration: 0.0ms | Allocations: 45)
+  [1m[36mParticipant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "participants" WHERE "participants"."room_id" = $1 AND "participants"."user_id" = $2 LIMIT $3[0m  [["room_id", 4], ["user_id", 2], ["LIMIT", 1]]
+  ↳ app/models/room.rb:23:in `participant?'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 2], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Blob Load (0.4ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::VariantRecord Load (0.2ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 12], ["variation_digest", "ZmDfamq3DaAOqmqEnqBAWE4VJTE="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  Rendered users/_status.html.erb (Duration: 0.1ms | Allocations: 45)
+  Rendered collection of users/_user.html.erb [3 times] (Duration: 22.7ms | Allocations: 16340)
+  Rendered layouts/_new_room_form.html.erb (Duration: 4.5ms | Allocations: 2689)
+  Rendered rooms/_search_results.html.erb (Duration: 0.4ms | Allocations: 228)
+  Rendered rooms/_search_form.html.erb (Duration: 1.9ms | Allocations: 1536)
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" INNER JOIN "joinables" ON "rooms"."id" = "joinables"."room_id" WHERE "joinables"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/rooms/_rooms.html.erb:1
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = $1 ORDER BY "messages"."created_at" DESC LIMIT $2[0m  [["room_id", 1], ["LIMIT", 1]]
+  ↳ app/models/room.rb:27:in `latest_message'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ app/models/room.rb:27:in `latest_message'
+  Rendered rooms/_joinable_link.html.erb (Duration: 0.4ms | Allocations: 315)
+  Rendered rooms/_last_message.html.erb (Duration: 0.9ms | Allocations: 410)
+  Rendered rooms/_room_container.html.erb (Duration: 2.2ms | Allocations: 1349)
+  Rendered rooms/_room.html.erb (Duration: 2.9ms | Allocations: 1711)
+  [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = $1 ORDER BY "messages"."created_at" DESC LIMIT $2[0m  [["room_id", 2], ["LIMIT", 1]]
+  ↳ app/models/room.rb:27:in `latest_message'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  ↳ app/models/room.rb:27:in `latest_message'
+  Rendered rooms/_joinable_link.html.erb (Duration: 0.1ms | Allocations: 82)
+  Rendered rooms/_last_message.html.erb (Duration: 0.1ms | Allocations: 79)
+  Rendered rooms/_room_container.html.erb (Duration: 0.8ms | Allocations: 391)
+  Rendered rooms/_room.html.erb (Duration: 1.0ms | Allocations: 496)
+  [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."room_id" = $1 ORDER BY "messages"."created_at" DESC LIMIT $2[0m  [["room_id", 10], ["LIMIT", 1]]
+  ↳ app/models/room.rb:27:in `latest_message'
+  Rendered rooms/_joinable_link.html.erb (Duration: 0.1ms | Allocations: 78)
+  Rendered rooms/_last_message.html.erb (Duration: 0.0ms | Allocations: 12)
+  Rendered rooms/_room_container.html.erb (Duration: 0.5ms | Allocations: 320)
+  Rendered rooms/_room.html.erb (Duration: 0.7ms | Allocations: 425)
+  Rendered rooms/_rooms.html.erb (Duration: 17.0ms | Allocations: 12736)
+  Rendered messages/_pager.html.erb (Duration: 1.0ms | Allocations: 956)
+  [1m[36mCACHE ActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mCACHE ActiveStorage::Blob Load (0.0ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 143], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 144], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 145], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 146], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 147], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 148], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 149], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 150], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 151], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mCACHE ActiveStorage::VariantRecord Load (0.0ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 8], ["variation_digest", "2LUGSpqeAxE2FTbZR5KExFsl26Y="], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `chat_avatar'
+  [1m[36mActiveStorage::Attachment Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 152], ["record_type", "Message"], ["name", "attachments"], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:13
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3[0m  [["record_id", 152], ["record_type", "Message"], ["name", "attachments"]]
+  ↳ app/views/messages/_message.html.erb:14
+  [1m[36mActiveStorage::Blob Load (0.2ms)[0m  [1m[34mSELECT "active_storage_blobs".* FROM "active_storage_blobs" WHERE "active_storage_blobs"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/views/messages/_message.html.erb:15
+  [1m[36mActiveStorage::VariantRecord Load (0.4ms)[0m  [1m[34mSELECT "active_storage_variant_records".* FROM "active_storage_variant_records" WHERE "active_storage_variant_records"."blob_id" = $1 AND "active_storage_variant_records"."variation_digest" = $2 LIMIT $3[0m  [["blob_id", 34], ["variation_digest", "G0Vst4geCVOXNaQRJ+bGaGFNhTs="], ["LIMIT", 1]]
+  ↳ app/models/message.rb:17:in `chat_attachment'
+[36m  Disk Storage (0.3ms) [0m[34mDownloaded file from key: 6yexlidxnn8shjo33v0tzxmcuzy3[0m
+  Rendered collection of messages/_message.html.erb [10 times] (Duration: 36.5ms | Allocations: 29258)
+  Rendered rooms/index.html.erb within layouts/application (Duration: 130.1ms | Allocations: 104722)
+  Rendered layout layouts/application.html.erb (Duration: 130.4ms | Allocations: 104817)
+Completed 500 Internal Server Error in 209ms (ActiveRecord: 25.0ms | Allocations: 154622)
+
+
+  
+ActionView::Template::Error (ActiveStorage::FileNotFoundError):
+    13:     <% if message.attachments.attached? %>
+    14:       <% message.attachments.each_with_index do |attachment, index| %>
+    15:         <% if attachment.image? %>
+    16:           <%= image_tag(message.chat_attachment(index)) %>
+    17:         <% elsif attachment.video? %>
+    18:           <%= video_tag(url_for(attachment), style:'height:auto; width:100%', controls:'') %>
+    19:         <% elsif attachment.audio? %>
+  
+app/models/message.rb:17:in `chat_attachment'
+app/views/messages/_message.html.erb:16
+app/views/messages/_message.html.erb:14
+app/views/rooms/index.html.erb:40
+app/controllers/users_controller.rb:19:in `show'
+Started PUT "/__web_console/repl_sessions/206934ce52e9c00561ce2c98e2438264" for ::1 at 2022-04-01 00:26:09 -0400
+Started PUT "/__web_console/repl_sessions/206934ce52e9c00561ce2c98e2438264" for ::1 at 2022-04-01 00:26:09 -0400
+Started PUT "/__web_console/repl_sessions/206934ce52e9c00561ce2c98e2438264" for ::1 at 2022-04-01 00:26:11 -0400
+Started PUT "/__web_console/repl_sessions/206934ce52e9c00561ce2c98e2438264" for ::1 at 2022-04-01 00:26:12 -0400
+Started PUT "/__web_console/repl_sessions/206934ce52e9c00561ce2c98e2438264" for ::1 at 2022-04-01 00:26:13 -0400
+  [1m[36mActiveStorage::Attachment Count (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = $1[0m  [["blob_id", 34]]
+  ↳ app/models/message.rb:17:in `chat_attachment'
+Started PUT "/__web_console/repl_sessions/206934ce52e9c00561ce2c98e2438264" for ::1 at 2022-04-01 00:26:15 -0400
+Started PUT "/__web_console/repl_sessions/206934ce52e9c00561ce2c98e2438264" for ::1 at 2022-04-01 00:26:16 -0400
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["blob_id", 34], ["LIMIT", 11]]
+Started PUT "/__web_console/repl_sessions/206934ce52e9c00561ce2c98e2438264" for ::1 at 2022-04-01 00:26:20 -0400
+Started PUT "/__web_console/repl_sessions/206934ce52e9c00561ce2c98e2438264" for ::1 at 2022-04-01 00:26:21 -0400
+  [1m[36mActiveStorage::Attachment Load (0.3ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = $1 ORDER BY "active_storage_attachments"."id" ASC LIMIT $2[0m  [["blob_id", 34], ["LIMIT", 1]]
+  ↳ app/models/message.rb:17:in `chat_attachment'
+Started PUT "/__web_console/repl_sessions/206934ce52e9c00561ce2c98e2438264" for ::1 at 2022-04-01 00:26:28 -0400
+Started PUT "/__web_console/repl_sessions/206934ce52e9c00561ce2c98e2438264" for ::1 at 2022-04-01 00:26:28 -0400
+Started PUT "/__web_console/repl_sessions/206934ce52e9c00561ce2c98e2438264" for ::1 at 2022-04-01 00:26:30 -0400
+Started PUT "/__web_console/repl_sessions/206934ce52e9c00561ce2c98e2438264" for ::1 at 2022-04-01 00:26:32 -0400
+Started PUT "/__web_console/repl_sessions/206934ce52e9c00561ce2c98e2438264" for ::1 at 2022-04-01 00:26:34 -0400
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."blob_id" = $1[0m  [["blob_id", 34]]
+  ↳ app/models/message.rb:17:in `chat_attachment'
+Started PUT "/__web_console/repl_sessions/206934ce52e9c00561ce2c98e2438264" for ::1 at 2022-04-01 00:26:37 -0400
+Started PUT "/__web_console/repl_sessions/206934ce52e9c00561ce2c98e2438264" for ::1 at 2022-04-01 00:26:37 -0400
+[36m  Disk Storage (7.4ms) [0m[34mGenerated URL for file at key: 6yexlidxnn8shjo33v0tzxmcuzy3 ()[0m
+Started PUT "/__web_console/repl_sessions/206934ce52e9c00561ce2c98e2438264" for ::1 at 2022-04-01 00:26:41 -0400
+Started PUT "/__web_console/repl_sessions/206934ce52e9c00561ce2c98e2438264" for ::1 at 2022-04-01 00:26:46 -0400
