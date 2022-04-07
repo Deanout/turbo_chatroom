@@ -1,0 +1,14 @@
+<li class="list-group-item room_list_item">
+  <div class="row">
+    <div class="col-12 d-flex align-items-center justify-content-between">
+      <%= link_to room.name, room_path(room, name_search: params[:name_search]), data: {turbo: "false"}, class: "ms-2 me-auto" %>
+      <%= render 'rooms/joinable_link', room: room %>
+    </div>
+  </div>
+  <%= turbo_frame_tag [dom_id(room), "last_message"] do %>
+    <%= render "rooms/last_message", 
+        room: room, 
+        user: user, 
+        last_message: last_message %>
+  <% end %>
+</li>

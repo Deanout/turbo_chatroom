@@ -6,6 +6,7 @@ class RoomsController < ApplicationController
     @room = Room.new
     @joined_rooms = current_user.joined_rooms.order('last_message_at DESC')
     @rooms = search_rooms
+    current_user.update(current_room: nil)
 
     @users = User.all_except(current_user)
     render 'index'
@@ -13,6 +14,7 @@ class RoomsController < ApplicationController
 
   def show
     @single_room = Room.find(params[:id])
+    current_user.update!(current_room: @single_room.id)
 
     @room = Room.new
     @rooms = search_rooms
