@@ -1,7 +1,8 @@
 # README
+This tutorial series covers creating an actual chatroom in Ruby on Rails. This is far more in-depth than anything I've covered in the past, and probably contains a lot of content that hasn't really been put together by anyone yet. The content itself is usually based on various other tutorials, but they've been pieced together into a project.
 
-Repository this code is based on:
-https://github.com/Deanout/turbochat 
+# [Demo](https://deanin-turbochat.herokuapp.com/)
+A demo for the project is currently up with the same Heroku setup as we cover in episode 8. Because it costs me to host the server's DigitalOcean spaces, I'm not sure how long it'll stay up. :)
 
 # Video Tutorials With Links
 
