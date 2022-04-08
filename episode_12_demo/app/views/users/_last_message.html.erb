@@ -2,11 +2,7 @@
   <div class="row">
     <div class="col-12 d-flex align-items-center justify-content-between">
       <em class="last-message">
-        <% if sender.id.eql?(Current.user.id) %>
-          <%= "You: #{last_message.body}".truncate(40) %>
-        <% else %>
-          <%= "#{sender.email}: #{last_message.body}".truncate(40) %>
-        <% end %>
+        <%= "#{sender.email}: #{last_message.body}".truncate(40) %>
       </em>
       <%= content_tag(:em, class:"last-message-time", 
                 data: {

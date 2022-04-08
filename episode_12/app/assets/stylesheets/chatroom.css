@@ -93,3 +93,33 @@
   color: #aaa;
   margin-top: 5px;
 }
+
+.message-image-container {
+  width: 150px;
+  height: 150px;
+  margin: 0;
+  padding: 0;
+}
+.message-image {
+  width: auto;
+  height: 150px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.message-video {
+  width: auto;
+  height: 150px;
+  margin: 0;
+  padding: 0;
+}
+.message-audio {
+  width: 100%;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+}
+.message-file {
+  color: white;
+  text-decoration: underline white;
+}

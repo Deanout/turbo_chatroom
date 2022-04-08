@@ -6,7 +6,7 @@ class Message < ApplicationRecord
 
   after_create_commit do
     update_parent_room
-    broadcast_append_to room
+    broadcast_append_later_to room
   end
 
   def chat_attachment(index)

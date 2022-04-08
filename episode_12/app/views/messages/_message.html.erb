@@ -10,18 +10,6 @@
     <div>
       <%= message.body %>
     </div>
-    <% if message.attachments.attached? %>
-      <% message.attachments.each_with_index do |attachment, index| %>
-        <% if attachment.image? %>
-          <%= image_tag(message.chat_attachment(index)) %>
-        <% elsif attachment.video? %>
-          <%= video_tag(url_for(attachment), style:'height:auto; width:100%', controls:'') %>
-        <% elsif attachment.audio? %>
-          <%= audio_tag(url_for(attachment), controls: '') %>
-        <% else %>
-          <%= link_to attachment.filename, url_for(attachment), style:"text-decoration: none; color: #fff" %>
-        <% end %>
-      <% end %>
-    <% end %>
+    <%= render "messages/attachments", message: message %>
   </div>
 </div>

@@ -1,0 +1,23 @@
+<% if message.attachments.attached? %>
+  <div class="row">
+    <% message.attachments.each_with_index do |attachment, index| %>
+      <% if attachment.image? %>
+        <div class="message-image col-6">
+          <%= image_tag(message.chat_attachment(index)) %>
+        </div>
+      <% elsif attachment.video? %>
+        <div class="col-12">
+          <%= video_tag(url_for(attachment), class:"message-video", controls:'') %>
+        </div>
+      <% elsif attachment.audio? %>
+        <div class="col-12">
+          <%= audio_tag(url_for(attachment), controls: '', class: "message-audio") %>
+        </div>
+      <% else %>
+        <div class="col-12">
+          <%= link_to attachment.filename, url_for(attachment), class:"message-file" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
