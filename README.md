@@ -1,15 +1,59 @@
 # README
+This tutorial series covers creating an actual chatroom in Ruby on Rails. This is far more in-depth than anything I've covered in the past, and probably contains a lot of content that hasn't really been put together by anyone yet. The content itself is usually based on various other tutorials, but they've been pieced together into a project.
 
-Repository this code is based on:
-https://github.com/Deanout/turbochat 
+# [Demo](https://deanin-turbochat.herokuapp.com/)
+A demo for the project is currently up with the same Heroku setup as we cover in episode 8. Because it costs me to host the server's DigitalOcean spaces, I'm not sure how long it'll stay up. :)
 
-Tutorials for this repository:
+# Video Tutorials With Links
 
-Part 1 - Chatrooms
-[Part 1](https://youtu.be/UvTLumcEMgU)
+## [Playlist](https://www.youtube.com/playlist?list=PL3mtAHT_eRex1sJI2uoTBgFT3qAXFbEcy)
+- The entire Turbochat playlist. Uploads every Friday until I run out of content ideas.
 
-Part 2 - Direct Messages
-Coming soon™
+## [Part 1](https://youtu.be/UvTLumcEMgU) 
+- Chatrooms
 
-Part 3 - 
-Coming soon™
+
+## [Part 2](https://www.youtube.com/watch?v=9riNezgzLRY&list=PL3mtAHT_eRex1sJI2uoTBgFT3qAXFbEcy&index=2) 
+- Direct Messages
+
+
+## [Part 3](https://www.youtube.com/watch?v=kNqPKN5vHC4&list=PL3mtAHT_eRex1sJI2uoTBgFT3qAXFbEcy&index=3) 
+- Stimulus Scroll Reset On Message Send
+
+
+## [Part 4](https://www.youtube.com/watch?v=q75o0idYIEM&list=PL3mtAHT_eRex1sJI2uoTBgFT3qAXFbEcy&index=4) 
+- Devise Avatars With Active Storage
+
+
+## [Part 5](https://www.youtube.com/watch?v=OcWdFSg11T8&list=PL3mtAHT_eRex1sJI2uoTBgFT3qAXFbEcy&index=5) 
+- User Online, Away, Offline statuses
+
+
+## [Part 6](https://www.youtube.com/watch?v=X7H1N6pMYzg&list=PL3mtAHT_eRex1sJI2uoTBgFT3qAXFbEcy&index=6) 
+- Message Attachments With Upload Previews For Images. Includes Images, Videos, Audio, Files
+
+
+## [Part 7](https://www.youtube.com/watch?v=ArBUAxEA6vM&list=PL3mtAHT_eRex1sJI2uoTBgFT3qAXFbEcy&index=7) 
+- Chatroom Infinite Scroll With Pagy Gem
+
+
+## [Part 8](https://www.youtube.com/watch?v=d2-cd4RKFwA&list=PL3mtAHT_eRex1sJI2uoTBgFT3qAXFbEcy&index=8) 
+- Deploying Turbo Chatroom To Heroku (Sets up Postgresql and Redis with Heroku)
+
+
+## [Part 9](https://www.youtube.com/watch?v=gSvxdRySpjk&list=PL3mtAHT_eRex1sJI2uoTBgFT3qAXFbEcy&index=9) 
+- Make Public Chatrooms Joinable/Leavable
+
+
+## [Part 10](https://www.youtube.com/watch?v=Qcjd2wWAojw&list=PL3mtAHT_eRex1sJI2uoTBgFT3qAXFbEcy&index=10) 
+- Show The Last Message Sent In Each Chatroom
+
+
+## [Part 11](https://www.youtube.com/watch?v=rpCx_8E-KXQ&list=PL3mtAHT_eRex1sJI2uoTBgFT3qAXFbEcy&index=11) 
+- Sort Chatrooms & Direct Messages By Most Recent First With Stimulus Controller
+
+
+## [Part 12](https://www.youtube.com/watch?v=49hSiBfjurg&list=PL3mtAHT_eRex1sJI2uoTBgFT3qAXFbEcy&index=12) 
+- Upgrading Ruby Version, Active Storage Broadcast Bugfix, And Infinite Scrolling With Active Storage Fix
+
+
