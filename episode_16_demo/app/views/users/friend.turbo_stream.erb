@@ -1,0 +1,9 @@
+<%= turbo_stream.replace("user_list_#{@user.id}",
+    partial: "users/user",
+    locals: {
+        room: @single_room,
+        user: @user,
+        last_message: @single_room&.latest_message,
+        sender: @single_room&.latest_message&.user,
+        requestor: current_user
+    }) %>
