@@ -4,6 +4,8 @@ class Message < ApplicationRecord
   before_create :confirm_participant
   has_many_attached :attachments, dependent: :destroy
 
+  validate :validate_attachment_filetypes
+
   after_create_commit do
     notify_recipients
     update_parent_room
@@ -35,6 +37,16 @@ class Message < ApplicationRecord
 
   private
 
+  def validate_attachment_filetypes
+    return unless attachments.attached?
+
+    attachments.each do |attachment|
+      next if attachment.content_type.in?(%w[image/jpeg image/png image/gif video/mp4 video/mpeg audio/wav])
+
+      errors.add(:attachments, 'Only jpeg, png, gif, mp4, mpeg, and wav are allowed.')
+    end
+  end
+
   def notify_recipients
     users_in_room = room.joined_users
     users_in_room.each do |user|
@@ -51,8 +63,8 @@ class Message < ApplicationRecord
                                partial: 'messages/message_preview',
                                locals: { message: self }
     message_to_remove = Message.where(room: Room.public_rooms).order(created_at: :desc).fifth
-    
+
     broadcast_remove_to 'public_messages',
-                          target: message_to_remove
+                        target: message_to_remove
   end
 end

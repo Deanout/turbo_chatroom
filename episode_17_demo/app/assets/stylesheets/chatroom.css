@@ -131,4 +131,47 @@
 .msg-role-admin {
   color: #00e5ff;
 }
+.room-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+/** Animate in an message error absolute pos */
+.message-error {
+  position: absolute;
+  top: 56;
+  right: 0;
+  width: 100%;
+  height: 3em;
+  background-color: #f8d7da;
+  z-index: 5;
+
+  animation: fade 3s forwards;
+  -webkit-animation: fade 3s forwards;
+  -moz-animation: fade 3s forwards;
+  -o-animation: fade 3s forwards;
+  -ms-animation: fade 3s forwards;
+}
+.message-error-text {
+  color: #842029;
+  text-align: center;
+  padding-top: 0.5em;
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
 

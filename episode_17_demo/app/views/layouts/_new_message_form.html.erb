@@ -1,3 +1,4 @@
+
 <div class="form-group msg-form">
   <%= form_with(model: [@single_room, @message], remote: true, class:'d-flex',
   data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset"}) do |f| %>
