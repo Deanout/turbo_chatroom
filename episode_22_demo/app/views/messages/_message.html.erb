@@ -4,7 +4,7 @@
       <%= image_tag(message.user.chat_avatar, class:'chat_pfp') %>
       <div>
         <h6 class="name msg-role-<%= message.user.role %>"> 
-        <%= link_to message.user.username, message.user, class:"msg-role-#{message.user.role}" %>
+        <%= render "messages/user_dropdown", user: message.user %>
         </h6>
         <p class="time"><%= time_ago_in_words(message.created_at) %> ago</p>
       </div>
