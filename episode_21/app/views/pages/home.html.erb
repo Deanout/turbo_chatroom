@@ -1,0 +1,30 @@
+<div class="row" style="margin:0px; padding: 0px">
+  <div class="col-8" style="padding: 0px">
+    <div class="card p-5">
+      <h1>Turbochat</h1>
+      <p>There are <strong><%= pluralize(@online_users, "User") %></strong> Online.</p>
+      <p>This is a simple chat application built with Ruby on Rails.<br />
+        It is a work in progress and is not yet fully functional. <br />
+        Feel free to make an account and look around!</p>
+      <% if current_user %>
+        <div class="btn-group">
+          <%= link_to "Start Chatting", rooms_path, class:'btn btn-primary' %>
+          <%= link_to "Edit Account", edit_user_registration_path, class:'btn btn-secondary' %>
+          <%= button_to "Logout", destroy_user_session_path, method: :delete, class:'btn btn-danger' %>
+        </div>
+      <% else %>
+        <div class="btn-group">
+          <%= link_to "Login", new_user_session_path, class:'btn btn-primary' %>
+          <%= link_to "Sign Up", new_user_registration_path, class:'btn btn-secondary' %>
+        </div><%=  %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= turbo_stream_from "public_messages" %>
+  <div class="col-4" id="public_messages" style="overflow: hidden; height: calc(100vh-56px); padding: 0px;">
+    <% @messages.each do |message| %>
+      <%= render "messages/message_preview", message: message %>
+    <% end %>
+  </div>
+</div>

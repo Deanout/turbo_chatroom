@@ -1,0 +1,40 @@
+{
+  "name": "turbochat",
+  "version": "1.0.1",
+  "description": "Chatroom app",
+  "author": "Deanin",
+  "license": "ISC",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "app:dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "com.deanin.turbochat",
+    "productName": "TurboChat",
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^18.0.4",
+    "electron-builder": "^23.0.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0"
+  }
+}
