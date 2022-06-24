@@ -1,0 +1,13 @@
+<%= form_with url: search_rooms_path, 
+    method: :post, 
+    id: "room_search_form",
+    data: {controller: "debounce"} do |form| %>
+  <%= form.search_field :name_search, 
+    value: params[:name_search],
+    class: 'room_search_field', 
+    placeholder: "Search Rooms to Join...",
+    data: { action: "input->debounce#search"} %>
+<% end %>
+<div id="search_results">
+  <%= render 'rooms/search_results', rooms: @rooms %>
+</div>
