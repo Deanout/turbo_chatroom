@@ -1,0 +1,15 @@
+<div class="dropdown">
+    <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown">
+        <%= content_tag(:div, user.username, class: "msg-role-#{user.role}") %>
+    </a>
+    <ul class="dropdown-menu bg-dark">
+        <div class="ml-2">
+            <%= image_tag(user.chat_avatar, class: 'chat_pfp') %>
+            <%= content_tag(:div, user.username, style:"color:#fff") %>
+            <%= content_tag(:p, user.role, class: "msg-role-#{user.role}") %>
+        </div>
+        <li><hr class="dropdown-divider"></li>
+        <li><%= link_to "Message", user, class: "dropdown-item" %></li>
+        <li><%= link_to "Another Option", "#", class: "dropdown-item" %></li>
+    </ul>
+</div>
