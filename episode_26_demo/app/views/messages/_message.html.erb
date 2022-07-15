@@ -1,0 +1,17 @@
+<div class="cont-<%=message.user.id%>">
+  <div class="message-box msg-<%= message.user.id %>">
+    <div class="d-flex align-items-center">
+      <%= image_tag(message.user.chat_avatar, class:'chat_pfp') %>
+      <div>
+        <h6 class="name msg-role-<%= message.user.role %>"> 
+          <%= render "messages/user_dropdown", user: message.user %>
+        </h6>
+        <p class="time"><%= time_ago_in_words(message.created_at) %> ago</p>
+      </div>
+    </div>
+    <div>
+      <%= markdown(message.body) %>
+    </div>
+    <%= render "messages/attachments", message: message %>
+  </div>
+</div>
