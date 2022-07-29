@@ -1,0 +1,23 @@
+<h1>Action Cable Signaling Server</h1>
+<h2><%= current_user&.email %></h2>
+<div>User ID:
+  <span id="current-user"><%= current_user&.to_gid_param %></span>
+</div>
+<% if current_user %>
+  <%= content_tag(:div, id:'remote-video-container', data: {
+    controller: 'signaling-server'
+}) do %><% end %>
+  <video id="local-video" autoplay></video>
+  <hr />
+  <%= button_tag "Join Room", id: "join-button", data: {
+    controller: 'signaling-server',
+    action:"click->signaling-server#handleJoinSession"
+} %>
+  <%= button_tag "Leave Room", id: "leave-button", data: {
+    controller: 'signaling-server',
+    action:"click->signaling-server#handleLeaveSession"
+} %>
+<% else %>
+  <%= link_to "Sign in", new_user_session_path %>
+  <%= link_to "Sign Up", new_user_registration_path %>
+<% end %>

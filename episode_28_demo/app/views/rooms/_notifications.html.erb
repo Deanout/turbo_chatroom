@@ -1,0 +1,6 @@
+<% unread = room.notifications_as_room.where(type: MessageNotification.name,
+                                            recipient: current_user).unread %>
+
+<% if unread.count > 0 %>
+    <%= "+#{unread.count}" %>
+<% end %>
